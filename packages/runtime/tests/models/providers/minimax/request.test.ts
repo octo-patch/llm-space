@@ -1,5 +1,6 @@
-import { createModels } from "@earendil-works/pi-ai";
 import { describe, expect, test } from "bun:test";
+
+import { createModels } from "@earendil-works/pi-ai";
 
 import { minimaxProvider } from "../../../../src/models/providers/minimax";
 import { minimaxCnProvider } from "../../../../src/models/providers/minimax-cn";
@@ -51,7 +52,7 @@ for (const factory of [minimaxProvider, minimaxCnProvider]) {
           expect(body?.reasoning_effort).toBe(reasoning);
           expect(body?.enable_thinking).toBeUndefined();
         } finally {
-          server.stop(true);
+          await server.stop(true);
         }
       });
     }
